@@ -61,12 +61,23 @@ getListProduct();
 const handleAdd = () => {
   const name = getEleId("name").value;
   const price = getEleId("price").value;
+  const screen = getEleId("").value;
   const img = getEleId("img").value;
   const category = getEleId("category").value;
   const desc = getEleId("description").value;
 
   // Tạo object product
-  const product = new Product("", name, price, img, category, desc);
+  const product = new Product(
+    "",
+    name,
+    price,
+    screen,
+    backCamera,
+    frontCamera,
+    img,
+    desc,
+    type
+  );
   console.log(product);
   const promise = api.addData(product);
   promise
