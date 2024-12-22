@@ -104,12 +104,14 @@ window.handleAdd = handleAdd;
  * Handle Edit
  */
 const handleEdit = (id) => {
-  const closeModalBtn = getEleId("close-modal");
-  console.log(closeModalBtn); // Kiểm tra phần tử có tồn tại và có thể click được không
-  if (closeModalBtn) {
-    closeModalBtn.click();
-  } else {
-    console.error("Element is either missing or unclickable.");
-  }
+  const modal = getEleId("custom-modal");
+  modal.classList.remove("hidden");
+
+  setTimeout(() => {
+    const closeModalBtn = getEleId("close-modal");
+    if (closeModalBtn) {
+      closeModalBtn.click();
+    }
+  }, 0); // Đảm bảo `click()` gọi sau khi DOM cập nhật.
 };
 window.handleEdit = handleEdit;
