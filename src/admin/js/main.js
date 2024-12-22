@@ -61,10 +61,12 @@ getListProduct();
 const handleAdd = () => {
   const name = getEleId("name").value;
   const price = getEleId("price").value;
-  const screen = getEleId("").value;
+  const screen = getEleId("screen").value;
+  const backCamera = getEleId("backCamera").value;
+  const frontCamera = getEleId("frontCamera").value;
   const img = getEleId("img").value;
-  const category = getEleId("category").value;
   const desc = getEleId("description").value;
+  const type = getEleId("category").value;
 
   // Tạo object product
   const product = new Product(
