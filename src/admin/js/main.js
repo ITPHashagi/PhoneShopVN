@@ -17,7 +17,9 @@ const renderListProduct = (data) => {
             <td class="px-6 py-3">${product.type}</td>
             <td class="px-6 py-3">${product.price}</td>
             <td>
-                <button class="btn bg-green-600 w-10 rounded-md text-white px-2 py-3">Edit</button>
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="btn bg-green-600 w-10 rounded-md text-white px-2 py-3" onclick="handleEdit('${
+                  product.id
+                }')">Edit</button>
                 <button class="btn bg-red-600 w-20 rounded-md text-white px-3 py-3" onclick="handleDelete('${
                   product.id
                 }')">Delete</button>
@@ -80,12 +82,10 @@ const handleAdd = () => {
     desc,
     type
   );
-  console.log(product);
   const promise = api.addData(product);
   promise
     .then((result) => {
       console.log(result.data);
-      alert(`Vừa thêm được sản phẩm ${result.data.id}`);
       getListProduct();
       getEleId("close").click();
     })
@@ -94,3 +94,22 @@ const handleAdd = () => {
     });
 };
 window.handleAdd = handleAdd;
+// const form = document.getElementById("addSP");
+// form.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   handleAdd();
+// });
+
+/**
+ * Handle Edit
+ */
+const handleEdit = (id) => {
+  const closeModalBtn = getEleId("close-modal");
+  console.log(closeModalBtn); // Kiểm tra phần tử có tồn tại và có thể click được không
+  if (closeModalBtn) {
+    closeModalBtn.click();
+  } else {
+    console.error("Element is either missing or unclickable.");
+  }
+};
+window.handleEdit = handleEdit;
