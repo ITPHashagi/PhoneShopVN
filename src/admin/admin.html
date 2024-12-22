@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/custom.css" />
     <link rel="stylesheet" href="../output.css" />
     <title>Document</title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    <!-- <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" /> -->
   </head>
   <body class="relative z-[1] bg-white">
     <!-- HEADER -->
@@ -29,7 +29,7 @@
         <div class="flex items-center justify-between gap-x-8">
           <!-- Logo -->
           <a href="" class="flex-shrink-0">
-            <img src="img/textLogo.png" alt="Logo" width="120" height="40" />
+            <!-- <img src="img/textLogo.png" alt="Logo" width="120" height="40" /> -->
           </a>
 
           <!-- SEARCH -->
@@ -77,7 +77,7 @@
 
           <!-- Switch to client -->
           <a
-            href=""
+            href="../client/client.html"
             class="flex flex-col items-center text-sm text-gray-700 hover:text-blue-600"
           >
             <i class="fa-solid fa-house text-3xl"></i>
@@ -125,13 +125,205 @@
                 <h2 class="text-4xl font-bold mb-4">Danh sách sản phẩm</h2>
               </div>
               <div>
+                <!-- Modal toggle -->
                 <button
-                  class="rounded-lg bg-blue-600 text-white text-base"
-                  style="padding: 5px 8px"
-                  id="btnThem"
+                  data-modal-target="crud-modal"
+                  data-modal-toggle="crud-modal"
+                  class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                  id="btnThemSP"
                 >
                   Thêm sản phẩm
                 </button>
+
+                <!-- Main modal -->
+                <div
+                  id="crud-modal"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                >
+                  <div class="relative p-4 w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div
+                      class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                    >
+                      <!-- Modal header -->
+                      <div
+                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+                      >
+                        <h3
+                          class="text-lg font-semibold text-gray-900 dark:text-white"
+                        >
+                          Thêm sản phẩm
+                        </h3>
+                        <button
+                          type="button"
+                          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                          data-modal-toggle="crud-modal"
+                          id="close"
+                        >
+                          <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                      </div>
+                      <!-- Modal body -->
+                      <form class="p-4 md:p-5">
+                        <div class="grid gap-4 mb-4 grid-cols-2">
+                          <div class="col-span-2">
+                            <label
+                              for="name"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Name</label
+                            >
+                            <input
+                              type="text"
+                              name="name"
+                              id="name"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="Type product name"
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2 sm:col-span-1">
+                            <label
+                              for="price"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Price</label
+                            >
+                            <input
+                              type="number"
+                              name="price"
+                              id="price"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="$2999"
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2 sm:col-span-1">
+                            <label
+                              for="category"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Category</label
+                            >
+                            <input
+                              id="category"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            >
+                            </input>
+                          </div>
+                          <div class="col-span-2">
+                            <label
+                              for="screen"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Screen</label
+                            >
+                            <input
+                              type="text"
+                              name="screen"
+                              id="screen"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="Screen..."
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2 sm:col-span-1">
+                            <label
+                              for="backCamera"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Back Camera</label
+                            >
+                            <input
+                              type="text"
+                              name="backCamera"
+                              id="backCamera"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="Back Camera..."
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2 sm:col-span-1">
+                            <label
+                              for="frontCamera"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Front Camera</label
+                            >
+                            <input
+                              type="text"
+                              name="frontCamera"
+                              id="frontCamera"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="Front Camera"
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2">
+                            <label
+                              for="name"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Images</label
+                            >
+                            <input
+                              type="text"
+                              name="name"
+                              id="img"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              placeholder="images"
+                              required=""
+                            />
+                          </div>
+                          <div class="col-span-2">
+                            <label
+                              for="description"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >Product Description</label
+                            >
+                            <textarea
+                              id="description"
+                              rows="4"
+                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder="Write product description here"
+                            ></textarea>
+                          </div>
+                        </div>
+                        <button
+                          type="submit"
+                          class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          id="addSP"
+                          onclick="handleAdd()"
+                        >
+                          <svg
+                            class="me-1 -ms-1 w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                          Add new product
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <hr />
@@ -154,116 +346,7 @@
                       <th scope="col" class="px-6 py-3">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr
-                      class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-                    >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        1
-                      </th>
-                      <td class="px-6 py-4">
-                        Giày MLB Chunky Liner Mid Classic
-                      </td>
-                      <td class="px-6 py-4">
-                        <img
-                          src="https://cdn.storims.com/api/v2/image/resize?path=https://storage.googleapis.com/storims_cdn/storims/uploads/5c0eb678527ba2441848e8c31f055d29.jpeg&format=jpeg"
-                          alt=""
-                          width="100"
-                          height="30"
-                        />
-                      </td>
-                      <td class="px-6 py-4">MLB</td>
-                      <td class="px-6 py-4">$2999</td>
-                      <td class="px-6 py-4">
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                    <tr
-                      class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-                    >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        Microsoft Surface Pro
-                      </th>
-                      <td class="px-6 py-4">White</td>
-                      <td class="px-6 py-4">Laptop PC</td>
-                      <td class="px-6 py-4">$1999</td>
-                      <td class="px-6 py-4">
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                    <tr
-                      class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-                    >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        Magic Mouse 2
-                      </th>
-                      <td class="px-6 py-4">Black</td>
-                      <td class="px-6 py-4">Accessories</td>
-                      <td class="px-6 py-4">$99</td>
-                      <td class="px-6 py-4">
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                    <tr
-                      class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-                    >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        Google Pixel Phone
-                      </th>
-                      <td class="px-6 py-4">Gray</td>
-                      <td class="px-6 py-4">Phone</td>
-                      <td class="px-6 py-4">$799</td>
-                      <td class="px-6 py-4">
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        Apple Watch 5
-                      </th>
-                      <td class="px-6 py-4">Red</td>
-                      <td class="px-6 py-4">Wearables</td>
-                      <td class="px-6 py-4">$999</td>
-                      <td class="px-6 py-4">
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >Edit</a
-                        >
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody id="tblDanhSachSP"></tbody>
                 </table>
               </div>
             </div>
@@ -278,5 +361,15 @@
     <!-- Script Flowbite -->
     <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <!-- CDN Axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
+      integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- SCRIPT -->
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
