@@ -1300,6 +1300,10 @@ input[type="range"]::-ms-fill-lower {
   padding-left: 2.5rem;
 }
 
+.pl-12 {
+  padding-left: 3rem;
+}
+
 .text-left {
   text-align: left;
 }
