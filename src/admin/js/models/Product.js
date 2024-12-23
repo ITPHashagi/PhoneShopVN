@@ -7,7 +7,7 @@ class Product {
     backCamera,
     frontCamera,
     img,
-    description,
+    desc,
     type
   ) {
     this.id = id;
@@ -17,7 +17,7 @@ class Product {
     this.backCamera = backCamera;
     this.frontCamera = frontCamera;
     this.img = img;
-    this.description = description;
+    this.desc = desc;
     this.type = type;
   }
 }

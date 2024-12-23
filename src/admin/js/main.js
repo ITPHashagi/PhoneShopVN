@@ -1,4 +1,5 @@
 import api from "../js/api.js";
+import feature from "./models/Feature.js";
 import Product from "./models/Product.js";
 
 const getEleId = (id) => document.getElementById(id);
@@ -142,14 +143,14 @@ window.handleEdit = handleEdit;
  */
 const handleUpdate = (id) => {
   //Dom tới input lấy giá trị
-  const name = getEleId("name").value;
-  const price = getEleId("price").value;
-  const screen = getEleId("screen").value;
-  const backCamera = getEleId("backCamera").value;
-  const frontCamera = getEleId("frontCamera").value;
-  const img = getEleId("img").value;
-  const desc = getEleId("description").value;
-  const type = getEleId("category").value;
+  const name = getEleId("nameEdit").value;
+  const price = getEleId("priceEdit").value;
+  const screen = getEleId("screenEdit").value;
+  const backCamera = getEleId("backCameraEdit").value;
+  const frontCamera = getEleId("frontCameraEdit").value;
+  const img = getEleId("imgEdit").value;
+  const desc = getEleId("descriptionEdit").value;
+  const type = getEleId("categoryEdit").value;
 
   // Tạo object product
   const product = new Product(
@@ -166,6 +167,7 @@ const handleUpdate = (id) => {
   const promise = api.updateData(product);
   promise
     .then((result) => {
+      //   console.log(result.data);
       alert(`Vừa cập nhật sản phẩm thứ ${result.data.id}`);
       getListProduct();
     })
@@ -174,3 +176,18 @@ const handleUpdate = (id) => {
     });
 };
 window.handleUpdate = handleUpdate;
+
+/**
+ * Search phone
+ */
+
+getEleId("default-search").addEventListener("keyup", function (event) {
+  event.preventDefault();
+  const keyword = getEleId("default-search").value.trim();
+  if (keyword) {
+    const searchPhone = feature.searchPhone(keyword); // Giả định: feature.searchPhone trả về danh sách sản phẩm
+    if (searchPhone.length > 0) {
+      renderListProduct(searchPhone); // Giả định: Hàm render danh sách sản phẩm
+    } else return "Không tìm thấy sản phẩm";
+  }
+});
