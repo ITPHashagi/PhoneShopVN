@@ -32,4 +32,4 @@ class Feature {
     return result;
   }
 }
-export default new Feature();
+export default Feature;
