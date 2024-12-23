@@ -1,8 +1,10 @@
 import api from "../js/api.js";
-import feature from "./models/Feature.js";
+import Feature from "./models/Feature.js";
 import Product from "./models/Product.js";
 
 const getEleId = (id) => document.getElementById(id);
+
+const feature = new Feature();
 
 const renderListProduct = (data) => {
   let content = "";
@@ -51,6 +53,7 @@ const getListProduct = () => {
 
   promise
     .then((result) => {
+      feature.arr = result.data;
       renderListProduct(result.data);
     })
     .catch((error) => {
@@ -185,7 +188,7 @@ getEleId("default-search").addEventListener("keyup", function (event) {
   event.preventDefault();
   const keyword = getEleId("default-search").value.trim();
   if (keyword) {
-    const searchPhone = feature.searchPhone(keyword); // Giả định: feature.searchPhone trả về danh sách sản phẩm
+    const searchPhone = feature.searchPhone(keyword);
     if (searchPhone.length > 0) {
       renderListProduct(searchPhone); // Giả định: Hàm render danh sách sản phẩm
     } else return "Không tìm thấy sản phẩm";
